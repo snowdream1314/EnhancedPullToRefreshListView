@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<resources>
+	<string name="elv_undo">撤销</string>
+	<string name="elv_undo_all">撤销所有</string>
+	<string name="elv_item_deleted">删除记录</string>
+	<string name="elv_n_items_deleted">%1$s条记录被删除</string>
+	<string name="elv_suredo_all">删除所有</string>
+	<string name="elv_suredo">删除</string>
+
+	<string name="hello_world">Hello world!</string>
+	<string name="xlistview_header_hint_normal">下拉刷新</string>
+	<string name="xlistview_header_hint_ready">松开刷新数据</string>
+	<string name="xlistview_header_hint_loading">正在加载...</string>
+	<string name="xlistview_header_last_time">上次更新时间：</string>
+	<string name="xlistview_footer_hint_normal">查看更多</string>
+	<string name="xlistview_footer_hint_ready">松开载入更多</string>
+</resources>
