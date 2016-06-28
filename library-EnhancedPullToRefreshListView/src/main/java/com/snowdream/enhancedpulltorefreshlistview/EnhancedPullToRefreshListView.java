@@ -367,7 +367,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
 
     // -- footer view
     private PullToRefreshListFooter mFooterView;
-    private boolean mEnablePullLoad = false;//增加设置默认不能上拉加载
+    private boolean mEnablePullLoad = false;//enable pull to load more, default is false
     private boolean mPullLoading;
     private boolean mIsFooterReady = false;
     private final static int SCROLLBACK_HEADER = 0;
@@ -798,20 +798,18 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
                 float dx = Math.abs((ev.getX() - mDownX));
                 mLastY = ev.getRawY();
 
-                //没有滑动删除且是y方向的滑动,动态改变头部或底部高度
                 if (!mSwiping && Math.pow(dx, 2) / Math.pow(dy, 2) <= 3 ) {
                     if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                         // the first item is showing, header has shown or pull down.
                         updateHeaderHeight(deltaY / OFFSET_RADIO);
                         invokeOnScrolling();
-                    } else if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)  && mEnablePullLoad) {//解决mEnablePullLoad设置为false后上拉ListView增加空白的条目，采用自定义的滚动监听来加载更多
+                    } else if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)  && mEnablePullLoad) {
                         // last item, already pulled up or want to pull up.
                         updateFooterHeight(-deltaY / OFFSET_RADIO);
                     }
                 }
 
-                //水平方向的滑动
-                if (mTouchState == TOUCH_STATE_X && mSwipeEnabled) {//增加是否允许滑动判断
+                if (mTouchState == TOUCH_STATE_X && mSwipeEnabled) {
                     if (mVelocityTracker == null || mSwipePaused) {
                         break;
                     }
@@ -853,7 +851,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
                 } else if (mTouchState == TOUCH_STATE_NONE) {
                     if (Math.abs(dy) > MAX_Y) {
                         mTouchState = TOUCH_STATE_Y;
-                    } else if (dx > MAX_X && mSwipeEnabled) {//增加是否允许滑动判断
+                    } else if (dx > MAX_X && mSwipeEnabled) {
                         mTouchState = TOUCH_STATE_X;
 //                        if (mOnSwipeListener != null) {
 //                            mOnSwipeListener.onSwipeStart(mTouchPosition);
@@ -879,8 +877,8 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
                     resetHeaderHeight();
                 }
 
-                //水平方向的滑动
-                if (mTouchState == TOUCH_STATE_X && mSwipeEnabled) {//增加是否允许滑动判断
+
+                if (mTouchState == TOUCH_STATE_X && mSwipeEnabled) {
                     if (mVelocityTracker == null) {
                         break;
                     }

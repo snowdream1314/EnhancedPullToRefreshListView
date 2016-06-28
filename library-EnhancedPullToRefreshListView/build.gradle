@@ -16,6 +16,9 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    lintOptions {
+        abortOnError false
+    }
 }
 
 dependencies {
@@ -24,3 +27,30 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.3.0'
     compile 'com.nineoldandroids:library:2.4.0'
 }
+
+ext {
+    bintrayRepo = 'maven'
+    bintrayName = 'EnhancedPullToRefreshListView'
+
+    publishedGroupId = 'com.snowdream.enhancedpulltorefreshlistview'
+    libraryName = 'enhancedpulltorefreshlistview'
+    artifact = 'library'
+
+    libraryDescription = 'An Android sample integrates EnhancedListView with PullToRefresh'
+
+    siteUrl = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView'
+    gitUrl = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView.git'
+
+    libraryVersion = '1.0.0'
+
+    developerId = 'snowdream1314'
+    developerName = 'xuxiaoqing'
+    developerEmail = 'xxq2dream@gmail.com'
+
+    licenseName = 'The Apache Software License, Version 2.0'
+    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
+    allLicenses = ["Apache-2.0"]
+}
+
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
+apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
