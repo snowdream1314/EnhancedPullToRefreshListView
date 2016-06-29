@@ -1,4 +1,4 @@
-package com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.view;
+package com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -12,7 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.snowdream.enhancedpulltorefreshlistview.R;
+import com.snowdream1314.enhancedpulltorefreshlistview.R;
 
 public class PullToRefreshListHeader extends LinearLayout {
     private LinearLayout mContainer;

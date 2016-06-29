@@ -1,4 +1,4 @@
-package com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.view;
+package com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.view;
 
 
 import android.content.Context;
@@ -8,7 +8,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.snowdream.enhancedpulltorefreshlistview.R;
+import com.snowdream1314.enhancedpulltorefreshlistview.R;
 
 public class PullToRefreshListFooter extends LinearLayout {
     public final static int STATE_NORMAL = 0;

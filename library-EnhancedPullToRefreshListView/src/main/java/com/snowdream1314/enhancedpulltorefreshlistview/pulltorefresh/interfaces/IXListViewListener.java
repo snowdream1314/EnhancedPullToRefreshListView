@@ -1,4 +1,4 @@
-package com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.interfaces;
+package com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.interfaces;
 
 /**
  * implements this interface to get refresh/load more event.

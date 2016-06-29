@@ -1,4 +1,4 @@
-package com.snowdream.enhancedpulltorefreshlistview;
+package com.snowdream1314.enhancedpulltorefreshlistview;
 
 import android.content.Context;
 import android.graphics.Rect;
@@ -32,10 +32,10 @@ import com.nineoldandroids.animation.AnimatorListenerAdapter;
 import com.nineoldandroids.animation.ValueAnimator;
 import com.nineoldandroids.view.ViewHelper;
 import com.nineoldandroids.view.ViewPropertyAnimator;
-import com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.interfaces.IXListViewListener;
-import com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.interfaces.OnXScrollListener;
-import com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.view.PullToRefreshListFooter;
-import com.snowdream.enhancedpulltorefreshlistview.pulltorefresh.view.PullToRefreshListHeader;
+import com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.interfaces.IXListViewListener;
+import com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.interfaces.OnXScrollListener;
+import com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.view.PullToRefreshListFooter;
+import com.snowdream1314.enhancedpulltorefreshlistview.pulltorefresh.view.PullToRefreshListHeader;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,7 +52,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
 
     /**
      * Defines the style in which <i>undos</i> should be displayed and handled in the list.
-     * Pass this to {@link #setUndoStyle(com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.UndoStyle)}
+     * Pass this to {@link #setUndoStyle(com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.UndoStyle)}
      * to change the default behavior from {@link #SINGLE_POPUP}.
      */
     public enum UndoStyle {
@@ -86,7 +86,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
 
     /**
      * Defines the direction in which list items can be swiped out to delete them.
-     * Use {@link #setSwipeDirection(com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.SwipeDirection)}
+     * Use {@link #setSwipeDirection(com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.SwipeDirection)}
      * to change the default behavior.
      * <p>
      * <b>Note:</b> This method requires the <i>Swipe to Dismiss</i> feature enabled. Use
@@ -153,19 +153,19 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
          * Don't return from this method, before your item has been deleted from the adapter, meaning
          * if you delete the item in another thread, you have to make sure, you don't return from
          * this method, before the item has been deleted. Since the way how you delete your item
-         * depends on your data and adapter, the {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+         * depends on your data and adapter, the {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
          * cannot handle that synchronizing for you. If you return from this method before you removed
          * the view from the adapter, you will most likely get errors like exceptions and flashing
          * items in the list.
          * <p>
          * If the user should get the possibility to undo this deletion, return an implementation
-         * of {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.Undoable} from this method.
+         * of {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.Undoable} from this method.
          * If you return {@code null} no undo will be possible. You are free to return an {@code Undoable}
          * for some items, and {@code null} for others, though it might be a horrible user experience.
          *
          * @param listView The {@link EnhancedPullToRefreshListView} the item has been deleted from.
          * @param position The position of the item to delete from your adapter.
-         * @return An {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.Undoable}, if you want
+         * @return An {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.Undoable}, if you want
          *      to give the user the possibility to undo the deletion.
          */
         Undoable onDismiss(EnhancedPullToRefreshListView listView, int position);
@@ -208,7 +208,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
         /**
          * Discard the undo, meaning the user has no longer the possibility to undo the deletion.
          * Implement this, to finally delete your stuff from permanent storages like databases
-         * (whereas in {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback#onKeyDown(int, android.view.KeyEvent)}
+         * (whereas in {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback#onKeyDown(int, android.view.KeyEvent)}
          * you should only remove it from the list adapter).
          */
         public void discard() { }
@@ -491,14 +491,14 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
     /**
      * Enables the <i>Swipe to Dismiss</i> feature for this list. This allows users to swipe out
      * an list item element to delete it from the list. Every time the user swipes out an element
-     * {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback#onDismiss(EnhancedPullToRefreshListView, int)}
-     * of the given {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView} will be called. To enable
-     * <i>undo</i> of the deletion, return an {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.Undoable}
-     * from {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback#onDismiss(EnhancedPullToRefreshListView, int)}.
+     * {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback#onDismiss(EnhancedPullToRefreshListView, int)}
+     * of the given {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView} will be called. To enable
+     * <i>undo</i> of the deletion, return an {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.Undoable}
+     * from {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback#onDismiss(EnhancedPullToRefreshListView, int)}.
      * Return {@code null}, if you don't want the <i>undo</i> feature enabled. Read the README file
      * or the demo project for more detailed samples.
      *
-     * @return The {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return The {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      * @throws java.lang.IllegalStateException when you haven't passed an {@link EnhancedPullToRefreshListView.OnDismissCallback}
      *      to {@link #setDismissCallback(EnhancedPullToRefreshListView.OnDismissCallback)} before calling this
      *      method.
@@ -517,7 +517,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
     /**
      * Disables the <i>Swipe to Dismiss</i> feature for this list.
      *
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView disableSwipeToDismiss() {
         mSwipeEnabled = false;
@@ -531,7 +531,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * {@link #enableSwipeToDismiss()} otherwise you will get an {@link java.lang.IllegalStateException}.
      *
      * @param dismissCallback The callback used to handle dismisses of list items.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView setDismissCallback(OnDismissCallback dismissCallback) {
         mDismissCallback = dismissCallback;
@@ -542,7 +542,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * Sets the callback to be called when the user is swiping an item from the list.
      *
      * @param shouldSwipeCallback The callback used to handle swipes of list items.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView setShouldSwipeCallback(OnShouldSwipeCallback shouldSwipeCallback) {
         mShouldSwipeCallback = shouldSwipeCallback;
@@ -550,12 +550,12 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
     }
 
     /**
-     * Sets the undo style of this list. See the javadoc of {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.UndoStyle}
+     * Sets the undo style of this list. See the javadoc of {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.UndoStyle}
      * for a detailed explanation of the different styles. The default style (if you never call this
-     * method) is {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.UndoStyle#SINGLE_POPUP}.
+     * method) is {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.UndoStyle#SINGLE_POPUP}.
      *
      * @param undoStyle The style of this listview.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView setUndoStyle(UndoStyle undoStyle) {
         mUndoStyle = undoStyle;
@@ -569,7 +569,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * {@code false}.
      *
      * @param hideDelay The delay in milliseconds.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView setUndoHideDelay(int hideDelay) {
         mUndoHideDelay = hideDelay;
@@ -581,7 +581,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * the undo popup. By default this is set to {@code true}.
      *
      * @param touchBeforeDismiss Whether the screen needs to be touched before the countdown starts.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      *
      * @see #setUndoHideDelay(int)
      */
@@ -599,7 +599,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * {@link #enableSwipeToDismiss()} to enable the feature.
      *
      * @param direction The direction to which the swipe should be limited.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView setSwipeDirection(SwipeDirection direction) {
         mSwipeDirection = direction;
@@ -618,7 +618,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * {@link #enableSwipeToDismiss()} to enable the feature.
      *
      * @param swipingLayoutId The id (from R.id) of the view, that should be swiped.
-     * @return This {@link com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
+     * @return This {@link com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView}
      */
     public EnhancedPullToRefreshListView setSwipingLayout(int swipingLayoutId) {
         mSwipingLayout = swipingLayoutId;
@@ -654,7 +654,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
      * @param position The position of the item in the list.
      * @throws java.lang.IndexOutOfBoundsException when trying to delete an item outside of the list range.
      * @throws java.lang.IllegalStateException when this method is called before an {@link EnhancedPullToRefreshListView.OnDismissCallback}
-     *      is set via {@link #setDismissCallback(com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback)}.
+     *      is set via {@link #setDismissCallback(com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.OnDismissCallback)}.
      * */
     public void delete(int position) {
         if(mDismissCallback == null) {
@@ -1248,7 +1248,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
     /**
      * Checks whether the delta of a swipe indicates, that the swipe is in the
      * correct direction, regarding the direction set via
-     * {@link #setSwipeDirection(com.snowdream.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.SwipeDirection)}
+     * {@link #setSwipeDirection(com.snowdream1314.enhancedpulltorefreshlistview.EnhancedPullToRefreshListView.SwipeDirection)}
      *
      * @param deltaX The delta of x coordinate of the swipe.
      * @return Whether the delta of a swipe is in the right direction.

@@ -1,8 +1,10 @@
 apply plugin: 'com.android.library'
+apply plugin: 'maven'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion "23.0.3"
+    buildToolsVersion "24"
 
     defaultConfig {
         minSdkVersion 15
@@ -28,29 +30,12 @@ dependencies {
     compile 'com.nineoldandroids:library:2.4.0'
 }
 
-ext {
-    bintrayRepo = 'maven'
-    bintrayName = 'EnhancedPullToRefreshListView'
 
-    publishedGroupId = 'com.snowdream.enhancedpulltorefreshlistview'
-    libraryName = 'enhancedpulltorefreshlistview'
-    artifact = 'library'
-
-    libraryDescription = 'An Android sample integrates EnhancedListView with PullToRefresh'
-
-    siteUrl = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView'
-    gitUrl = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView.git'
-
-    libraryVersion = '1.0.0'
-
-    developerId = 'snowdream1314'
-    developerName = 'xuxiaoqing'
-    developerEmail = 'xxq2dream@gmail.com'
-
-    licenseName = 'The Apache Software License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
+publish {
+    userOrg = 'snowdream1314'
+    groupId = 'com.snowdream1314'
+    artifactId = 'enhancedpulltorefreshlistview'
+    publishVersion = '1.0.0'
+    desc = 'An Android sample integrates EnhancedListView with PullToRefresh'
+    website = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView'
 }
-
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/installv1.gradle'
-apply from: 'https://raw.githubusercontent.com/nuuneoi/JCenter/master/bintrayv1.gradle'
