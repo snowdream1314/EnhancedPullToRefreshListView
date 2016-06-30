@@ -2,6 +2,10 @@
 
 An Android sample integrates [EnhancedListView](https://github.com/timroes/EnhancedListView) with [PullToRefresh](https://github.com/chrisbanes/Android-PullToRefresh)
 
+## Demo
+
+![demo](https://github.com/snowdream1314/EnhancedPullToRefreshListView/blob/master/demo.gif)
+
 ## Usage
 
 #### Add dependency
