@@ -119,6 +119,10 @@ An Android sample integrates [EnhancedListView](https://github.com/timroes/Enhan
 
 * [Android-PullToRefresh-SwipeMenuListView-Sample](https://github.com/licaomeng/Android-PullToRefresh-SwipeMenuListView-Sample)
 
+## 关于我
+
+* email: xxq2dream@gmail.com
+
 
 License
 =======
