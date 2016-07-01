@@ -32,10 +32,14 @@ dependencies {
 
 
 publish {
+    repoName = 'maven'
     userOrg = 'snowdream1314'
+    uploadName = 'enhancedpulltorefreshlistview'
     groupId = 'com.snowdream1314'
     artifactId = 'enhancedpulltorefreshlistview'
     publishVersion = '1.0.0'
-    desc = 'An Android sample integrates EnhancedListView with PullToRefresh'
+    description = 'An Android sample integrates EnhancedListView with PullToRefresh'
     website = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView'
+    repository = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView.git'
+    licences = ['MIT']
 }

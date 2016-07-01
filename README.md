@@ -79,10 +79,13 @@ An Android sample integrates [EnhancedListView](https://github.com/timroes/Enhan
         
         //SwipeDirection 
         mListView.setSwipeDirection(EnhancedPullToRefreshListView.SwipeDirection.BOTH);
+        
         //undo delay, millseconds
         mListView.setUndoHideDelay(2500);
+        
         //undo style
         mListView.setUndoStyle(EnhancedPullToRefreshListView.UndoStyle.COLLAPSED_POPUP);
+        
         //dismiss after undo delay without touch
         mListView.setRequireTouchBeforeDismiss(false);
         
@@ -104,7 +107,7 @@ An Android sample integrates [EnhancedListView](https://github.com/timroes/Enhan
             //loadMore function
         }
         
-### Thanks
+## Thanks
 
 * [EnhancedListView](https://github.com/timroes/EnhancedListView)
 
