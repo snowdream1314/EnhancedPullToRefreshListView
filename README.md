@@ -10,7 +10,7 @@ An Android sample integrates [EnhancedListView](https://github.com/timroes/Enhan
 
 #### Add dependency
 
-        compile 'com.snowdream1314:enhancedpulltorefreshlistview:1.0.0'
+        compile 'com.snowdream1314:enhancedpulltorefreshlistview:1.1.0'
         
 #### Use it in your layout xml replacing listview:
 
