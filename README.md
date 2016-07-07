@@ -66,11 +66,11 @@ An Android sample integrates [EnhancedListView](https://github.com/timroes/Enhan
 
 * pull to refresh       
 
-        mListView.setPullRefreshEnable(true);//open pull to refresh, false for close 
-        
+        mListView.setPullRefreshEnable(true);//open pull to refresh, false for close
+
 * pull to load more
 
-        mListView.setPullLoadEnable(false);//true for open , false for close 
+        mListView.setOnScrollListener(your-pull-to-load-more-function);
         
 * swipe to dismiss
 

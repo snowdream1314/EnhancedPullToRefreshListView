@@ -48,7 +48,7 @@ import java.util.TreeSet;
  * Created by snow on 2016/6/24.
  */
 
-public class EnhancedPullToRefreshListView extends ListView implements AbsListView.OnScrollListener {
+public class EnhancedPullToRefreshListView extends ListView {
 
     /**
      * Defines the style in which <i>undos</i> should be displayed and handled in the list.
@@ -366,8 +366,8 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
     private boolean mPullRefreshing = false; // is refreashing.
 
     // -- footer view
-    private PullToRefreshListFooter mFooterView;
-    private boolean mEnablePullLoad = false;//enable pull to load more, default is false
+//    private PullToRefreshListFooter mFooterView;
+//    private boolean mEnablePullLoad = false;//enable pull to load more, default is false
     private boolean mPullLoading;
     private boolean mIsFooterReady = false;
     private final static int SCROLLBACK_HEADER = 0;
@@ -377,7 +377,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
 
     private Scroller mScroller; // used for scroll back
     private float mLastY = -1; // save event y
-    private OnScrollListener mScrollListener; // user's scroll listener
+//    private OnScrollListener mScrollListener; // user's scroll listener
 
     private final static int SCROLL_DURATION = 400;
     private final static int PULL_LOAD_MORE_DELTA = 50;
@@ -462,7 +462,7 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
         addHeaderView(mHeaderView);
 
         // init footer view
-        mFooterView = new PullToRefreshListFooter(ctx);
+//        mFooterView = new PullToRefreshListFooter(ctx);
 
         // init header height
         mHeaderView.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -481,10 +481,10 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
 
     @Override
     public void setAdapter(ListAdapter adapter) {
-        if (mIsFooterReady == false) {
-            mIsFooterReady = true;
-            addFooterView(mFooterView);
-        }
+//        if (mIsFooterReady == false) {
+//            mIsFooterReady = true;
+//            addFooterView(mFooterView);
+//        }
         super.setAdapter(adapter);
     }
 
@@ -802,11 +802,12 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
                     if (getFirstVisiblePosition() == 0 && (mHeaderView.getVisiableHeight() > 0 || deltaY > 0)) {
                         // the first item is showing, header has shown or pull down.
                         updateHeaderHeight(deltaY / OFFSET_RADIO);
-                        invokeOnScrolling();
-                    } else if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)  && mEnablePullLoad) {
-                        // last item, already pulled up or want to pull up.
-                        updateFooterHeight(-deltaY / OFFSET_RADIO);
+//                        invokeOnScrolling();
                     }
+//                    else if ((mFooterView.getBottomMargin() > 0 || deltaY < 0)  && mEnablePullLoad) {
+//                        // last item, already pulled up or want to pull up.
+//                        updateFooterHeight(-deltaY / OFFSET_RADIO);
+//                    }
                 }
 
                 if (mTouchState == TOUCH_STATE_X && mSwipeEnabled) {
@@ -861,11 +862,12 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
                 break;
             case MotionEvent.ACTION_UP:
                 mLastY = -1; // reset
-                if (mEnablePullLoad && mFooterView.getHeight()>0 && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {
-                    startLoadMore();
-                    resetFooterHeight();
-                    new ResetHeaderHeightTask().execute();
-                } else if (getFirstVisiblePosition() == 0) {
+//                if (mEnablePullLoad && mFooterView.getHeight()>0 && mFooterView.getBottomMargin() > PULL_LOAD_MORE_DELTA) {
+//                    startLoadMore();
+//                    resetFooterHeight();
+//                    new ResetHeaderHeightTask().execute();
+//                }
+                if (getFirstVisiblePosition() == 0) {
                     // invoke refresh
                     if (mEnablePullRefresh && mHeaderView.getVisiableHeight() > mHeaderViewHeight) {
                         mPullRefreshing = true;
@@ -950,12 +952,12 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
         mHeaderTimeView.setText(time);
     }
 
-    private void invokeOnScrolling() {
-        if (mScrollListener instanceof OnXScrollListener) {
-            OnXScrollListener l = (OnXScrollListener) mScrollListener;
-            l.onXScrolling(this);
-        }
-    }
+//    private void invokeOnScrolling() {
+//        if (mScrollListener instanceof OnXScrollListener) {
+//            OnXScrollListener l = (OnXScrollListener) mScrollListener;
+//            l.onXScrolling(this);
+//        }
+//    }
 
     private void updateHeaderHeight(float delta) {
         mHeaderView.setVisiableHeight((int) delta + mHeaderView.getVisiableHeight());
@@ -969,18 +971,18 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
         setSelection(0); // scroll to top each time
     }
 
-    private void updateFooterHeight(float delta) {
-        int height = mFooterView.getBottomMargin() + (int) delta;
-        if (mEnablePullLoad && !mPullLoading) {
-            if (height > PULL_LOAD_MORE_DELTA) { // height enough to invoke load
-                // more.
-                mFooterView.setState(PullToRefreshListFooter.STATE_READY);
-            } else {
-                mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
-            }
-        }
-        mFooterView.setBottomMargin(height);
-    }
+//    private void updateFooterHeight(float delta) {
+//        int height = mFooterView.getBottomMargin() + (int) delta;
+//        if (mEnablePullLoad && !mPullLoading) {
+//            if (height > PULL_LOAD_MORE_DELTA) { // height enough to invoke load
+//                // more.
+//                mFooterView.setState(PullToRefreshListFooter.STATE_READY);
+//            } else {
+//                mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
+//            }
+//        }
+//        mFooterView.setBottomMargin(height);
+//    }
 
     /**
      * reset header view's height.
@@ -1004,46 +1006,46 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
         invalidate();
     }
 
-    private void resetFooterHeight() {
-        int bottomMargin = mFooterView.getBottomMargin();
-        if (bottomMargin > 0) {
-            mScrollBack = SCROLLBACK_FOOTER;
-            mScroller.startScroll(0, bottomMargin, 0, -bottomMargin, SCROLL_DURATION);
-            invalidate();
-        }
-    }
+//    private void resetFooterHeight() {
+//        int bottomMargin = mFooterView.getBottomMargin();
+//        if (bottomMargin > 0) {
+//            mScrollBack = SCROLLBACK_FOOTER;
+//            mScroller.startScroll(0, bottomMargin, 0, -bottomMargin, SCROLL_DURATION);
+//            invalidate();
+//        }
+//    }
 
-    private void startLoadMore() {
-        mPullLoading = true;
-        mFooterView.setState(PullToRefreshListFooter.STATE_LOADING);
-        if (mListViewListener != null) {
-            mListViewListener.onLoadMore();
-        }
-    }
+//    private void startLoadMore() {
+//        mPullLoading = true;
+//        mFooterView.setState(PullToRefreshListFooter.STATE_LOADING);
+//        if (mListViewListener != null) {
+//            mListViewListener.onLoadMore();
+//        }
+//    }
 
     /**
      * enable or disable pull up load more feature.
      *
      * @param enable
      */
-    public void setPullLoadEnable(boolean enable) {
-        mEnablePullLoad = enable;
-        if (!mEnablePullLoad) {
-            mFooterView.hide();
-            mFooterView.setOnClickListener(null);
-        } else {
-            mPullLoading = false;
-            mFooterView.show();
-            mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
-            // both "pull up" and "click" will invoke load more.
-            mFooterView.setOnClickListener(new OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    startLoadMore();
-                }
-            });
-        }
-    }
+//    public void setPullLoadEnable(boolean enable) {
+//        mEnablePullLoad = enable;
+//        if (!mEnablePullLoad) {
+//            mFooterView.hide();
+//            mFooterView.setOnClickListener(null);
+//        } else {
+//            mPullLoading = false;
+//            mFooterView.show();
+//            mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
+//            // both "pull up" and "click" will invoke load more.
+//            mFooterView.setOnClickListener(new OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    startLoadMore();
+//                }
+//            });
+//        }
+//    }
 
     public void setPullRefreshEnable(boolean enable) {
         mEnablePullRefresh = enable;
@@ -1068,12 +1070,12 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
     /**
      * stop load more, reset footer view.
      */
-    public void stopLoadMore() {
-        if (mPullLoading == true) {
-            mPullLoading = false;
-            mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
-        }
-    }
+//    public void stopLoadMore() {
+//        if (mPullLoading == true) {
+//            mPullLoading = false;
+//            mFooterView.setState(PullToRefreshListFooter.STATE_NORMAL);
+//        }
+//    }
 
 
     @Override
@@ -1081,35 +1083,36 @@ public class EnhancedPullToRefreshListView extends ListView implements AbsListVi
         if (mScroller.computeScrollOffset()) {
             if (mScrollBack == SCROLLBACK_HEADER) {
                 mHeaderView.setVisiableHeight(mScroller.getCurrY());
-            } else {
-                mFooterView.setBottomMargin(mScroller.getCurrY());
             }
+//            else {
+//                mFooterView.setBottomMargin(mScroller.getCurrY());
+//            }
             postInvalidate();
-            invokeOnScrolling();
+//            invokeOnScrolling();
         }
         super.computeScroll();
     }
 
-    @Override
-    public void setOnScrollListener(OnScrollListener l) {
-        mScrollListener = l;
-    }
+//    @Override
+//    public void setOnScrollListener(OnScrollListener l) {
+//        mScrollListener = l;
+//    }
 
-    @Override
-    public void onScrollStateChanged(AbsListView view, int scrollState) {
-        if (mScrollListener != null) {
-            mScrollListener.onScrollStateChanged(view, scrollState);
-        }
-    }
+//    @Override
+//    public void onScrollStateChanged(AbsListView view, int scrollState) {
+//        if (mScrollListener != null) {
+//            mScrollListener.onScrollStateChanged(view, scrollState);
+//        }
+//    }
 
-    @Override
-    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        // send to user's listener
-        mTotalItemCount = totalItemCount;
-        if (mScrollListener != null) {
-            mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
-        }
-    }
+//    @Override
+//    public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
+//        // send to user's listener
+//        mTotalItemCount = totalItemCount;
+//        if (mScrollListener != null) {
+//            mScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
+//        }
+//    }
 
 
     public void setXListViewListener(IXListViewListener l) {
