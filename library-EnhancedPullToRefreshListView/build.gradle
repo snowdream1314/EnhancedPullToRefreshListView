@@ -37,7 +37,7 @@ publish {
     uploadName = 'enhancedpulltorefreshlistview'
     groupId = 'com.snowdream1314'
     artifactId = 'enhancedpulltorefreshlistview'
-    publishVersion = '1.0.0'
+    publishVersion = '1.1.0'
     description = 'An Android sample integrates EnhancedListView with PullToRefresh'
     website = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView'
     repository = 'https://github.com/snowdream1314/EnhancedPullToRefreshListView.git'
